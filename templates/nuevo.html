@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Nuevo Ticket – TecnoSoporte SAC{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+
+    <div class="d-flex align-items-center mb-4">
+      <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-sm me-3">
+        <i class="bi bi-arrow-left"></i>
+      </a>
+      <div>
+        <h4 class="mb-0 fw-bold">Registrar Nuevo Ticket</h4>
+        <small class="text-muted">Ingrese los datos de la solicitud de soporte</small>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header bg-white py-3">
+        <i class="bi bi-ticket-perforated me-2 text-primary"></i>Datos del Ticket
+      </div>
+      <div class="card-body p-4">
+        <form method="POST" action="{{ url_for('nuevo_ticket') }}">
+
+          <div class="mb-3">
+            <label for="cliente" class="form-label fw-semibold">
+              <i class="bi bi-person me-1"></i>Nombre del Cliente *
+            </label>
+            <input type="text" class="form-control" id="cliente" name="cliente"
+                   placeholder="Ej: Juan Pérez García" required maxlength="100" />
+          </div>
+
+          <div class="mb-3">
+            <label for="telefono" class="form-label fw-semibold">
+              <i class="bi bi-telephone me-1"></i>Teléfono de Contacto *
+            </label>
+            <input type="text" class="form-control" id="telefono" name="telefono"
+                   placeholder="Ej: 999 888 777" required maxlength="20" />
+          </div>
+
+          <div class="mb-4">
+            <label for="problema" class="form-label fw-semibold">
+              <i class="bi bi-exclamation-triangle me-1"></i>Descripción del Incidente *
+            </label>
+            <textarea class="form-control" id="problema" name="problema"
+                      rows="4" placeholder="Describa el problema técnico con detalle..."
+                      required maxlength="500"></textarea>
+            <div class="form-text text-muted">Máximo 500 caracteres.</div>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary px-4">
+              <i class="bi bi-save me-1"></i>Registrar Ticket
+            </button>
+            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+              Cancelar
+            </a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
